@@ -305,8 +305,7 @@ p {
 #add-comment,
 #add-comment-reply {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items: start;
   flex-wrap: nowrap;
 }
 
