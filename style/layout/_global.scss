@@ -1,0 +1,354 @@
+*::after,
+*::before,
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $bg-body;
+    font-size: $fontsize;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+header .sr-only {
+    margin-left: -0.00685rem;
+    width: 0.00685rem;
+    height: 0.00685rem;
+    font-size: 0.00685rem;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+main {
+    max-width: 60%;
+    margin-top: 3rem;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.img-of-user,
+.img-of-comment {
+    width: 2.5rem;
+}
+
+h2 {
+    font-size: 1.1rem;
+    color: $Grey800 ;
+}
+
+.reply-on-comments,
+.user-reply-on-comments {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+p {
+    margin-top: 0.7rem;
+    line-height: 1.6;
+}
+
+.reply-section {
+    position: relative;
+}
+
+.reply-section::before {
+    content: "";
+    position: absolute;
+    width: 0.1rem;
+    height: 100%;
+    background-color: hsl(240, 5%, 85%);
+}
+
+.number-of-inc-dec-replies {
+    margin-block: 1.4rem;
+}
+
+.increment-decrement-replies {
+    background-color: $bg-body ;
+    padding-inline: 1rem;
+    padding-block: 0.7rem;
+    border-radius: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.comment-card:hover,
+.reply-input-container:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 2px 12px $Purple200;
+}
+
+.tag-of-user {
+    background-color: $purple-color;
+    color: $White;
+    font-weight: $fontweigthnormal;
+    display: flex;
+    font-size: $fontsize;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 0.7rem;
+    height: 1.5rem;
+    border-radius: 0.3rem;
+}
+
+.delete {
+    color: $Pink400;
+    font-weight: 700;
+    margin-right: 1rem;
+}
+
+.model-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+}
+
+.dele-comment {
+    position: absolute;
+    top: 30%;
+    left: 36%;
+    width: 23rem;
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    max-width: 90%;
+}
+
+.dele-comment h2 {
+    font-size: 1.3rem;
+}
+
+.dele-comment p {
+    font-weight: $fontweigthlight;
+    color: $Grey500;
+}
+
+.main-comment,
+.replies-on-main-comment {
+    flex-grow: 1;
+}
+
+.edit-comment {
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    resize: none;
+    padding-inline: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(240, 5%, 85%);
+
+    &::-webkit-scrollbar {
+        width: 0.3rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: hsl(240, 5%, 85%);
+        border-radius: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #d6cbff;
+        border-radius: 0.3rem;
+    }
+}
+
+.edit-comment:focus {
+    outline: none;
+    box-shadow: 0 2px 12px $Purple200;
+}
+#add-comment,
+#add-comment-reply{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap:nowrap;
+
+}
+.content-of-comment {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    overflow-x: hidden;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.reply-input-container {
+    position: relative;
+}
+
+.reply-input-container img {
+    margin-left: 0.5rem;
+}
+
+.comment-reply {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    box-sizing: border-box;
+    padding-top: 1.2rem;
+    padding-bottom: 8%;
+    width: 77%;
+    padding-inline: 1rem;
+    border-radius: 0.7rem;
+    border: 1px solid hsl(240, 5%, 85%);
+}
+
+.input {
+    margin-bottom: 3rem;
+    padding-inline: 1.5rem;
+    padding-block: 2rem;
+}
+
+.comment-input {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    box-sizing: border-box;
+    padding-top: 1.2rem;
+    padding-bottom: 8%;
+    width: 77%;
+    padding-inline: 1rem;
+    border-radius: 0.7rem;
+    border: 1px solid hsl(240, 5%, 85%);
+    text-align: left;
+    direction: ltr;
+    position: relative;
+}
+
+.comment-input:focus,
+.comment-reply:focus {
+    outline: none;
+    box-shadow: 0 2px 12px $Purple200;
+
+}
+
+.comment-input::placeholder {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.comment-reply::placeholder,
+.comment-input::placeholder {
+    font-size: $fontsize;
+    font-weight: 600;
+    color: $font-color
+}
+@media (width < 1250px) {
+    main {
+        max-width: 90%;
+    }
+
+    .flx-design {
+        flex-direction: column-reverse;
+    }
+
+    .increment-decrement-replies {
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding-inline: 0;
+        width: 15%;
+    }
+
+    .number-of-inc-dec-replies {
+        margin-block: 0;
+    }
+
+    .comment-card,
+    .input {
+        position: relative;
+    }
+
+    .user-reply-on-comments,
+    .reply-on-comments {
+        position: absolute;
+        bottom: 2rem;
+        right: 1rem;
+    }
+
+    .comment-input,
+    .comment-reply {
+        display: block;
+        width: 100%;
+        min-height: 3.5rem;
+        padding-bottom: 1rem;
+        padding-left: 3.5rem;
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .input .img-of-user {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 1rem;
+    }
+}
+@media (width < 650px) {
+    main {
+        max-width: 90%;
+    }
+
+    .flx-design {
+        flex-direction: column-reverse;
+    }
+
+    .increment-decrement-replies {
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding-inline: 0;
+        width: 35%;
+    }
+
+    .number-of-inc-dec-replies {
+        margin-block: 0;
+    }
+
+    .comment-card,
+    .input {
+        position: relative;
+    }
+
+    .user-reply-on-comments,
+    .reply-on-comments {
+        position: absolute;
+        bottom: 2rem;
+        right: 1rem;
+    }
+
+    .comment-input,
+    .comment-reply {
+        display: block;
+        width: 100%;
+        min-height: 4.5rem;
+        padding-bottom: 1rem;
+        padding-left: 3.5rem;
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .input .img-of-user {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 1rem;
+    }
+}

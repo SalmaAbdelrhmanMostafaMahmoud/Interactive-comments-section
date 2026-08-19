@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A fully interactive comments section web application built with HTML, CSS, and JavaScript, featuring real-time CRUD operations like adding, editing, and deleting comments.">
+    <meta name="keywords"
+        content="Interactive Comments Section, Frontend Mentor, JavaScript CRUD App, Web Development, HTML, CSS, Frontend Project">
+    <title>Interactive comments section</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/main.css">
+    <script src="js/index.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="sr-only">Interactive comments section</h1>
+    </header>
+    <main>
+    <section id="main-comment" aria-label="main comment">
+    </section>
+         <section class="input" aria-labelledby="add-comment">
+            <form action="#" id="add-comment">
+        <img src="images/image-juliusomo.png" alt="picture of comment`s owner" class="img-of-user">
+        <input placeholder="Add a comment...." class="comment-input">
+        <button type="button" id="send-btn">SEND</button>
+            </form>
+    </section>
+                    <div class="model-overlay">
+            <div class="dele-comment">
+        <h2>Delete Comment </h2>
+        <p>Are you sure you want to delete this comment? This will remove the comment and can't be undone.</p>
+        <div class="btn">
+        <button type="button" class="cancel-btn">NO, CANCEL</button>
+        <button type="button" class="del-btn">YES, DELETE</button>
+        </div>
+    </div>
+    </div>
+    </main>
+</body>
+
+</html>

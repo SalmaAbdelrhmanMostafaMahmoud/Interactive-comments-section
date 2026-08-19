@@ -1,0 +1,69 @@
+@mixin flx-style {
+    display: flex;
+    gap: 1rem;
+   
+}
+
+@mixin card-style {
+    background-color: $White;
+    border-radius: 0.5rem;
+    box-shadow: 0px 10px 20px $Grey100;
+
+}
+
+@mixin card-style-comments {
+    margin-bottom: 1.5rem;
+    padding-block: 1.5rem;
+    padding-inline: 1rem;
+}
+
+@mixin card-style-replies {
+    margin-left: 2.5rem
+}
+
+@mixin purple-color {
+    color: $purple-color;
+    font-weight: $fontweigthlarge;
+}
+@mixin font-style{
+          font-size:$fontsize ;
+        font-weight: $fontweigthnormal;
+        color:$font-color;
+}
+@mixin pointer{
+    cursor: pointer;
+}
+.comment-owner-details,
+.comment-owner-replies-details,
+.flx-design {
+    @include flx-style
+}
+
+.comment-card,
+.input,
+.dele-comment,
+.reply-input-container {
+    @include card-style
+}
+.comment-card{
+    @include card-style-comments;
+    @include pointer
+}
+.replies-pattern {
+    @include card-style-replies
+}
+.content-of-comment,
+.date-of-comment-user,
+.date-of-comment{
+    @include font-style
+}
+.tag-span,
+.reply,
+.edit,
+.number-of-inc-dec-replies {
+    @include purple-color;
+    @include pointer
+}
+.img-of-user{
+    @include pointer
+}

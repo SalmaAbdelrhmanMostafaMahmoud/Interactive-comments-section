@@ -1,0 +1,70 @@
+#send-btn,
+.edit-button,
+#reply-btn{
+    padding-block: 1rem;
+    border-radius: 0.4rem;
+    color:$White ;
+    background-color:$btn-bg ;
+    font-weight:$fontweigthlarge ;
+    font-size: $fontsize;
+    border: none;
+}
+#send-btn:hover,
+.edit-button:hover,
+#reply-btn:hover{
+background-color: #7e85d7;
+}
+#send-btn,
+#reply-btn{
+    padding-inline: 2rem;
+}
+.edit-button{
+    display: block;
+    margin-left: auto;
+    padding-inline: 1rem;
+    margin-top: 1rem;
+}
+#reply-btn{
+    padding-inline: 1.5rem;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+.cancel-btn,
+.del-btn{
+    padding-block: 1rem;
+    padding-inline: 1.3rem;
+    margin-top: 1rem;
+    font-weight: $fontweigthlarge;
+    font-size:$fontsize;
+    border-radius:0.3rem ;
+    color: $White;
+    border: none;
+}
+.cancel-btn{
+ background-color:#66727e;   
+}
+.del-btn{
+    background-color:$Pink400 ;
+}
+.cancel-btn:hover,
+.del-btn:hover{
+    transform: translateY(-0.1rem);
+}
+.cancel-btn:hover{
+    background-color:hsl(210, 1%, 67%) ;
+}
+.del-btn:hover{
+    background-color:hsl(358, 66%, 76%) ;
+}
+
+@media(width < 1250px){
+   #send-btn,
+   #reply-btn{
+    display: block;
+  margin-left: auto;
+   } 
+}
