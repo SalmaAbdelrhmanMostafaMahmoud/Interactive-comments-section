@@ -16,7 +16,7 @@ body {
     box-sizing: border-box;
 }
 
-header .sr-only {
+.sr-only {
     margin-left: -0.00685rem;
     width: 0.00685rem;
     height: 0.00685rem;
@@ -39,11 +39,12 @@ main {
 .img-of-user,
 .img-of-comment {
     width: 2.5rem;
+    flex-shrink: 0;
 }
 
 h2 {
     font-size: 1.1rem;
-    color: $Grey800 ;
+    color: $Grey800;
 }
 
 .reply-on-comments,
@@ -74,7 +75,7 @@ p {
 }
 
 .increment-decrement-replies {
-    background-color: $bg-body ;
+    background-color: $bg-body;
     padding-inline: 1rem;
     padding-block: 0.7rem;
     border-radius: 0.7rem;
@@ -111,6 +112,9 @@ p {
 }
 
 .model-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -122,9 +126,6 @@ p {
 }
 
 .dele-comment {
-    position: absolute;
-    top: 30%;
-    left: 36%;
     width: 23rem;
     padding-block: 2rem;
     padding-inline: 1rem;
@@ -175,17 +176,17 @@ p {
     outline: none;
     box-shadow: 0 2px 12px $Purple200;
 }
-#add-comment,
-#add-comment-reply{
-    display: flex;
-    align-items: start;
-    flex-wrap:nowrap;
 
+#add-comment,
+#add-comment-reply {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
+
 .content-of-comment {
     white-space: pre-wrap;
     overflow-wrap: break-word;
-    word-break: break-word;
     overflow-x: hidden;
 }
 
@@ -197,17 +198,12 @@ body.no-scroll {
     position: relative;
 }
 
-.reply-input-container img {
-    margin-left: 0.5rem;
-}
-
 .comment-reply {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    flex: 1;
+    min-width: 0;
     box-sizing: border-box;
     padding-top: 1.2rem;
-    padding-bottom: 8%;
-    width: 77%;
+    padding-bottom: 1.2rem;
     padding-inline: 1rem;
     border-radius: 0.7rem;
     border: 1px solid hsl(240, 5%, 85%);
@@ -220,12 +216,11 @@ body.no-scroll {
 }
 
 .comment-input {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    flex: 1;
+    min-width: 0;
     box-sizing: border-box;
     padding-top: 1.2rem;
-    padding-bottom: 8%;
-    width: 77%;
+    padding-bottom: 5rem;
     padding-inline: 1rem;
     border-radius: 0.7rem;
     border: 1px solid hsl(240, 5%, 85%);
@@ -238,7 +233,6 @@ body.no-scroll {
 .comment-reply:focus {
     outline: none;
     box-shadow: 0 2px 12px $Purple200;
-
 }
 
 .comment-input::placeholder {
@@ -251,7 +245,7 @@ body.no-scroll {
 .comment-input::placeholder {
     font-size: $fontsize;
     font-weight: 600;
-    color: $font-color
+    color: $font-color;
 }
 @media (width < 1250px) {
     main {
@@ -273,35 +267,37 @@ body.no-scroll {
         margin-block: 0;
     }
 
-    .comment-card,
-    .input {
-        position: relative;
-    }
-
     .user-reply-on-comments,
     .reply-on-comments {
-        position: absolute;
-        bottom: 2rem;
-        right: 1rem;
+display: flex;
+align-items: flex-end;
+    }
+
+    #add-comment,
+    #add-comment-reply {
+        flex-wrap: wrap;
     }
 
     .comment-input,
     .comment-reply {
-        display: block;
-        width: 100%;
-        min-height: 3.5rem;
+        order: 1;
+        flex-basis: 100%;
+        min-height: 7rem;
         padding-bottom: 1rem;
-        padding-left: 3.5rem;
-        margin-left: 0;
         margin-bottom: 1rem;
     }
 
     .input .img-of-user {
-        position: absolute;
-        bottom: 2.5rem;
-        left: 1rem;
+        order: 2;
+    }
+
+    #send-btn,
+    #reply-btn {
+        order: 3;
+        margin-left: auto;
     }
 }
+
 @media (width < 650px) {
     main {
         max-width: 90%;
@@ -322,32 +318,41 @@ body.no-scroll {
         margin-block: 0;
     }
 
-    .comment-card,
-    .input {
+    .comment-card {
         position: relative;
     }
 
     .user-reply-on-comments,
     .reply-on-comments {
-        position: absolute;
-        bottom: 2rem;
-        right: 1rem;
+position: absolute;
+bottom: 2rem;
+right: 1rem;
+    }
+
+.comment-card.is-editing .user-reply-on-comments {
+    transform: translateY(-4rem);
+}
+    #add-comment,
+    #add-comment-reply {
+        flex-wrap: wrap;
     }
 
     .comment-input,
     .comment-reply {
-        display: block;
-        width: 100%;
-        min-height: 4.5rem;
+        order: 1;
+        flex-basis: 100%;
+        min-height: 7rem;
         padding-bottom: 1rem;
-        padding-left: 3.5rem;
-        margin-left: 0;
         margin-bottom: 1rem;
     }
 
     .input .img-of-user {
-        position: absolute;
-        bottom: 2.5rem;
-        left: 1rem;
+        order: 2;
+    }
+
+    #send-btn,
+    #reply-btn {
+        order: 3;
+        margin-left: auto;
     }
 }

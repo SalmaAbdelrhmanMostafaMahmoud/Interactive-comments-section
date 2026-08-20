@@ -20,14 +20,23 @@ async function fetchComments() {
 function savedData() {
     localStorage.setItem('commentsData', JSON.stringify(data));
 }
+function escape(content){
+   return String(content).replace(/[&<>"']/g,c=>({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]))
+}
 function renderComments(comment) {
     const { id, user, createdAt, content, score } = comment
     return `<div data-id="${id}" class="comment-card">         
     <div class="flx-design">
-                <div class="increment-decrement-replies" aria-label="increment or decrement number of replies">
-                    <img src="images/icon-plus.svg" alt="plus sign" class="plus-replies">
-                    <span class="number-of-inc-dec-replies" aria-label="number of replies">${score}</span>
-                    <img src="images/icon-minus.svg" alt="minus sign" class="minus-replies">
+                <div class="increment-decrement-replies">
+                   <button type="button" class="plus-replies">
+        <img src="images/icon-plus.svg" alt="">
+        <span class="sr-only">Upvote</span>
+    </button>
+                    <span class="number-of-inc-dec-replies">${score}</span>
+                   <button type="button" class="minus-replies">
+        <img src="images/icon-minus.svg" alt="">
+        <span class="sr-only">Downvote</span>
+    </button>
                 </div>
                 <div class="main-comment">
                     <div class="comment-owner">
@@ -36,11 +45,13 @@ function renderComments(comment) {
                             <h2 class="comment-owner-name">${user.username}</h2>
                             <span class="date-of-comment">${createdAt}</span>
                             <div class="reply-on-comments">
-                            <img src="images/icon-reply.svg" alt="reply sign" class="reply-sign">
+                            <button class="reply-sign" type="button" aria-label="Reply on comment">
+                            <img src="images/icon-reply.svg" alt="">
                             <span class="reply">Reply</span>
+                            </button>
                         </div>
                         </div>
-                        <p class="content-of-comment">${content}</p>
+                        <p class="content-of-comment">${escape(content)}</p>
                     </div>
                 </div>
             </div>
@@ -60,10 +71,16 @@ function renderReplies(reply, currentUser , parentUsername) {
     const isOwner = user.username === currentUser;
     return ` <div  data-id="${id}" class="comment-card replies-pattern">          
 <div class="flx-design">
-                <div class="increment-decrement-replies" aria-label="increment or decrement number of replies">
-                    <img src="images/icon-plus.svg" alt="plus sign" class="plus-replies">
-                    <span class="number-of-inc-dec-replies" aria-label="number of replies">${score}</span>
-                    <img src="images/icon-minus.svg" alt="minus sign" class="minus-replies">
+                <div class="increment-decrement-replies">
+<button type="button" class="plus-replies">
+        <img src="images/icon-plus.svg" alt="">
+        <span class="sr-only">Upvote</span>
+    </button>
+                        <span class="number-of-inc-dec-replies">${score}</span>
+                   <button type="button" class="minus-replies">
+        <img src="images/icon-minus.svg" alt="">
+        <span class="sr-only">Downvote</span>
+    </button>
                 </div>
                 <div class="replies-on-main-comment">
                     <div class="${isOwner ? 'comment-owner' : 'comment-owner-replies'}">
@@ -73,17 +90,19 @@ function renderReplies(reply, currentUser , parentUsername) {
                             ${isOwner ? '<span class="tag-of-user">you</span>' : ''}
                             <span class="${isOwner ? 'date-of-comment-user' : 'date-of-comment'}">${createdAt}</span>${isOwner ? `
                         <div class="user-reply-on-comments">
-                            <img src="images/icon-delete.svg" alt="delete icon" class="delete-icon">
+                        <button class="delete-icon" type="button" aria-label="Delete comment"><img src="images/icon-delete.svg" alt=""></button>
                             <span class="delete">Delete</span>
-                            <img src="images/icon-edit.svg" alt="edit icon" class="edit-icon">
-                            <span class="edit">Edit</span>
+                            <button class="edit-icon" aria-label="Edit comment"><img src="images/icon-edit.svg" alt=""></button>
+                            <span class="edit" type="button">Edit</span>
                         </div>` : `
                         <div class="reply-on-comments">
-                            <img src="images/icon-reply.svg" alt="reply sign" class="reply-sign">
-                            <span class="reply">Reply</span>
+                        <button class="reply-sign" type="button" aria-label="Reply on comment">
+                        <img src="images/icon-reply.svg" alt="">
+                         <span class="reply">Reply</span>
+                         </button>
                         </div>`}
                         </div>
-                         <p class="content-of-comment"><span class="tag-span">@${taggedUser} </span>${content}</p>
+                         <p class="content-of-comment"><span class="tag-span">@${taggedUser} </span>${escape(content)}</p>
                     </div>
                 </div>
             </div>
@@ -240,6 +259,8 @@ function openEditMode(e) {
     const editedBtn = document.createElement('button');
     editedBtn.className = 'edit-button';
     editedBtn.textContent = 'UPDATE';
+    editedBtn.type = 'button' ;
+    commentCard.classList.add('is-editing');
     commentCard.appendChild(editedBtn);
     editedBtn.addEventListener('click', () => {
         const updatedText = inputEditedComment.value;

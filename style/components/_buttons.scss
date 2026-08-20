@@ -1,3 +1,7 @@
+button{
+    border: none;
+    background-color: transparent;
+}
 #send-btn,
 .edit-button,
 #reply-btn{
@@ -7,7 +11,6 @@
     background-color:$btn-bg ;
     font-weight:$fontweigthlarge ;
     font-size: $fontsize;
-    border: none;
 }
 #send-btn:hover,
 .edit-button:hover,
@@ -42,7 +45,6 @@ background-color: #7e85d7;
     font-size:$fontsize;
     border-radius:0.3rem ;
     color: $White;
-    border: none;
 }
 .cancel-btn{
  background-color:#66727e;   
@@ -60,11 +62,7 @@ background-color: #7e85d7;
 .del-btn:hover{
     background-color:hsl(358, 66%, 76%) ;
 }
-
-@media(width < 1250px){
-   #send-btn,
-   #reply-btn{
-    display: block;
-  margin-left: auto;
-   } 
+.reply{
+    font-size: $fontsize;
+    font-weight: $fontweigthlarge;
 }
